@@ -39,19 +39,19 @@
                <VBox.margin>
                   <Insets left="10.0" top="5.0" />
                </VBox.margin>
+               <toggleGroup>
+                  <ToggleGroup fx:id="getMouseXY" />
+               </toggleGroup>
             </ToggleButton>
             <Label text="Start">
                <VBox.margin>
                   <Insets left="10.0" top="10.0" />
                </VBox.margin>
             </Label>
-            <ToggleButton fx:id="startMouseButton" mnemonicParsing="false" text="Mouse Possition">
+            <ToggleButton fx:id="startMouseButton" mnemonicParsing="false" text="Mouse Possition" toggleGroup="$getMouseXY">
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" />
                </VBox.margin>
-               <toggleGroup>
-                  <ToggleGroup fx:id="getMouseXY" />
-               </toggleGroup>
             </ToggleButton>
             <HBox>
                <children>
