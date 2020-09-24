@@ -9,4 +9,6 @@ Similar to Inkscape this SVG-Editor in an intuitive Application in order to load
 - now you are good to go! Open the Project in your IDE and start Main Method
 
 ## Features explained
--the Editor looks like this. You can change the Theme in CSS File if there is a need to.
+- the Editor looks like this. You can change the Theme in CSS File if there is a need to. I chose a nice modern bluish dark theme with custom Stage-Header
+![alt text](https://github.com/lukasthekid/SVG-Editor/blob/master/Screenshots/Overview.PNG)
+- as you can see you have the opportunity to draw different shapes like rectangles or lines like Microsoft's Paint, but every Shape you draw will be convertet to SVG-Paths, therefore you can scale your drawings as you want (see: https://searchwindevelopment.techtarget.com/definition/vector-graphics#:~:text=Vector%20graphics%20is%20the%20creation,direction%20at%20the%20same%20time.)
