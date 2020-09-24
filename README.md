@@ -12,3 +12,9 @@ Similar to Inkscape this SVG-Editor in an intuitive Application in order to load
 - the Editor looks like this. You can change the Theme in CSS File if there is a need to. I chose a nice modern bluish dark theme with custom Stage-Header
 ![alt text](https://github.com/lukasthekid/SVG-Editor/blob/master/Screenshots/Overview.PNG)
 - as you can see you have the opportunity to draw different shapes like rectangles or lines like Microsoft's Paint, but every Shape you draw will be convertet to SVG-Paths, therefore you can scale your drawings as you want (see: https://searchwindevelopment.techtarget.com/definition/vector-graphics#:~:text=Vector%20graphics%20is%20the%20creation,direction%20at%20the%20same%20time.)
+- one of the main features is the open funktion, in which you can load in loacally stored SVG or CSV files into the editor. The SVG code will be extracted and converted into JavaFX's class: SVGPath, thus you will be able to egt hand on every single path and change its content. The file opener works very performant and Vector-Files with more than 10k paths to extract and draw on canvas should not be a big deal. (Addition: the Canvas is set on 600 x 800, therefore bigger fill be croped)
+(public transport of Vienna, 12k paths)
+![alt text](https://github.com/lukasthekid/SVG-Editor/blob/master/Screenshots/OpenSvg.PNG)
+- if none of the tools is selected, you can drag the content on the canvas by mouse-dragging
+- with mouse scrolling you can zoom in. Because we work with vectorgraphics the content wont get blurry. with every scroll the content gets redrawn.
+- if you select the line tool a new window gets displayed, here you have even more features. by clicking "line" you can draw lines by dragging. Moreover you can click on canvas for start and end point for the line ("startMouse" "closeMouse"). You can also type in your start coordinates and how much you want to move on from that point. Surely you can combinate both features.
