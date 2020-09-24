@@ -18,3 +18,6 @@ Similar to Inkscape this SVG-Editor in an intuitive Application in order to load
 - if none of the tools is selected, you can drag the content on the canvas by mouse-dragging
 - with mouse scrolling you can zoom in. Because we work with vectorgraphics the content wont get blurry. with every scroll the content gets redrawn.
 - if you select the line tool a new window gets displayed, here you have even more features. by clicking "line" you can draw lines by dragging. Moreover you can click on canvas for start and end point for the line ("startMouse" "closeMouse"). You can also type in your start coordinates and how much you want to move on from that point. Surely you can combinate both features.
+![alt text](https://github.com/lukasthekid/SVG-Editor/blob/master/Screenshots/LineController.PNG)
+- Now i want to display the CSV feature. By saving a drawing to CSV the content will be extract and saved with fill,stroke,stroke-whith and path. With this feature you will be able to load the SVG file into a database, change the color or delete selected path and so on... You can reopen the CSV file and edit again.
+
