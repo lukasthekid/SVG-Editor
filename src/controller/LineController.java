@@ -9,9 +9,13 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.SVGPath;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.util.Stack;
 
@@ -31,15 +35,22 @@ public class LineController {
     private TextField closeX;
     @FXML
     private TextField closeY;
+    @FXML
+    private HBox stageHead;
+    @FXML
+    private ImageView closeBtn;
 
 
     private SvgDrawboardController controller;
     private Stage stage;
+    private double xOffset = 0;
+    private double yOffset = 0;
 
 
 
     public void run(ToggleButton entryButton){
         stage.setAlwaysOnTop(true);
+        stage.initStyle(StageStyle.TRANSPARENT);
         Canvas canvas = controller.getCanvas();
         GraphicsContext gc = canvas.getGraphicsContext2D();
         ColorPicker colorPicker = controller.getStrokeCP();
@@ -125,7 +136,7 @@ public class LineController {
             }
         });
 
-        stage.setOnCloseRequest(e->{
+        closeBtn.setOnMouseClicked(e->{
             controller.run();
             SvgDrawboardController.getStage().show();
             entryButton.setSelected(false);
@@ -134,6 +145,20 @@ public class LineController {
             stage.close();
         });
 
+
+        stageHead.setOnMousePressed(e->{
+            xOffset = e.getSceneX();
+            yOffset = e.getSceneY();
+        });
+
+        stageHead.setOnMouseDragged(e->{
+            stage.setX(e.getScreenX() - xOffset);
+            stage.setY(e.getScreenY() - yOffset);
+            stage.setOpacity(0.8f);
+        });
+        stageHead.setOnMouseReleased(e->{
+            stage.setOpacity(1.0f);
+        });
 
 
     }
@@ -161,4 +186,5 @@ public class LineController {
     public void setStage(Stage stage) {
         this.stage = stage;
     }
+
 }

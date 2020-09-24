@@ -37,8 +37,8 @@ public class SvgDrawboardController {
      private double scale = 1.0;
      private double totalScale = 1.0;
      //store X Y Offset for moving the stage
-    private double xOffset = 0;
-    private double yOffset = 0;
+     private double xOffset = 0;
+     private double yOffset = 0;
 
 
     //FXML for Drawboard
@@ -502,10 +502,7 @@ public class SvgDrawboardController {
          stage.setIconified(!stage.isIconified());
     }
 
-    public void maximize(MouseEvent mouseEvent) {
-
-         stage.setMaximized(!stage.isMaximized());
-    }
+    public void maximize(MouseEvent mouseEvent) { stage.setMaximized(!stage.isMaximized()); }
 
     public void close(MouseEvent mouseEvent) {
          stage.close();

@@ -25,3 +25,7 @@
     -fx-font-size: 20pt;
     -fx-prompt-text-fill: #eee8d5;
 }
+#stageHead{
+    -fx-border-color: #586e75;
+    -fx-background-color: #073642;
+}
