@@ -48,7 +48,7 @@
                   <Insets left="10.0" top="10.0" />
                </VBox.margin>
             </Label>
-            <ToggleButton fx:id="startMouseButton" mnemonicParsing="false" text="Mouse Possition" toggleGroup="$getMouseXY">
+            <ToggleButton fx:id="startMouseButton" mnemonicParsing="false" text="Mouse Position" toggleGroup="$getMouseXY">
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" />
                </VBox.margin>
@@ -72,7 +72,7 @@
                   <Insets left="10.0" top="10.0" />
                </VBox.margin>
             </Label>
-            <ToggleButton fx:id="closeMouseButton" mnemonicParsing="false" text="Mouse Possition" toggleGroup="$getMouseXY">
+            <ToggleButton fx:id="closeMouseButton" mnemonicParsing="false" text="Mouse Position" toggleGroup="$getMouseXY">
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" />
                </VBox.margin>
