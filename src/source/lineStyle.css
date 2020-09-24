@@ -1,0 +1,27 @@
+.label{
+    -fx-text-fill: #eee8d5;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+}
+.toggle-button{
+    -fx-background-color: #eee8d5;
+    -fx-text-fill: #073642;
+    -fx-background-radius: 5;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+    -fx-font-size: 10pt;
+}
+.toggle-button:selected{
+    -fx-background-color: #073642;
+    -fx-border-color: #eee8d5;
+    -fx-border-radius: 5;
+    -fx-text-fill: #eee8d5;
+}
+.toggle-button:hover{
+    -fx-border-color: #eee8d5;
+    -fx-border-radius: 5;
+}
+.text-field{
+    -fx-text-fill: #073642;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 20pt;
+    -fx-prompt-text-fill: #eee8d5;
+}
