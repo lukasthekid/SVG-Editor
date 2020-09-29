@@ -111,7 +111,7 @@
                   <Insets bottom="5.0" />
                </VBox.margin></Button>
             <RadioButton fx:id="isolate" mnemonicParsing="false" text="Isolate" />
-            <RadioButton fx:id="editLines" mnemonicParsing="false" text="Edit">
+            <RadioButton fx:id="editLines" mnemonicParsing="false" text="Edit" toggleGroup="$tools">
                <VBox.margin>
                   <Insets top="5.0" />
                </VBox.margin>
