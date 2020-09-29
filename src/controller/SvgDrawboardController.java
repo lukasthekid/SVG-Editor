@@ -6,7 +6,10 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Bounds;
+import javafx.geometry.Point2D;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -65,11 +68,13 @@ public class SvgDrawboardController {
     @FXML
     private Button undo;
     @FXML
-    private RadioButton edit;
+    private RadioButton isolate;
     @FXML
     private Button save;
     @FXML
     private Button open;
+    @FXML
+    private RadioButton editLines;
 
      //FXML for LineWindow
      @FXML
@@ -127,6 +132,14 @@ public class SvgDrawboardController {
                     circ.setCenterX(mouseX);
                     circ.setCenterY(mouseY);
                }
+               else if(editLines.isSelected()){
+                   //found = findLine(mouseX,mouseY);
+                   ObservableList<Node> nodes = FXCollections.observableArrayList(paths);
+                   Node l = findNearestNode(nodes,mouseX,mouseY);
+                   System.out.println((SVGPath)l);
+                   deleteAndDraw((SVGPath)l);
+
+               }
                else{
                    position.setStartX(mouseX);
                    position.setStartY(mouseY);
@@ -154,7 +167,7 @@ public class SvgDrawboardController {
 
                }
                //drag the canvas
-               else if(!extendLine.isSelected() && !rectbtn.isSelected() && !circlebtn.isSelected()){
+               else if(!extendLine.isSelected() && !rectbtn.isSelected() && !circlebtn.isSelected() && !editLines.isSelected()){
                    position.setEndX(mouseX);
                    position.setEndY(mouseY);
                    //if zoomed into the canvas should move slower
@@ -210,7 +223,6 @@ public class SvgDrawboardController {
                     push.setStroke(rect.getStroke());
                     undoHistory.push(new Group(push));
 
-
                } else if (circlebtn.isSelected()) {
                     circ.setRadius((Math.abs(mouseX - circ.getCenterX()) + Math.abs(mouseY - circ.getCenterY())) / 2);
                     if (circ.getCenterX() > mouseX) {
@@ -234,7 +246,7 @@ public class SvgDrawboardController {
                    undoHistory.push(new Group(push));
 
                }
-               else{
+               else if(!editLines.isSelected()){
                    //close the canvas track path
                    position.setEndY(mouseX);
                    position.setEndX(mouseY);
@@ -276,7 +288,7 @@ public class SvgDrawboardController {
             }
         });
 
-        edit.setOnAction(e->{
+        isolate.setOnAction(e->{
             paths.clear();
             undoHistory.clear();
         });
@@ -290,17 +302,52 @@ public class SvgDrawboardController {
         stageHead.setOnMouseDragged(e->{
             stage.setX(e.getScreenX() - xOffset);
             stage.setY(e.getScreenY() - yOffset);
+            if(e.getScreenX() == 0.0 && e.getScreenY() == 0.0) {
+                stage.setX(0);
+                stage.setY(0);
+                stage.setMaximized(true);
+            }
             stage.setOpacity(0.8f);
         });
         stageHead.setOnMouseReleased(e->{
             stage.setOpacity(1.0f);
         });
-
-
-
-
      }
-        //load the LineWindow stage
+
+    private void deleteAndDraw(SVGPath l) {
+        paths.remove(l);
+        gc.clearRect(0,0,canvas.getWidth(),canvas.getHeight());
+        for (SVGPath s : paths)
+            draw(s);
+    }
+
+    private Node findNearestNode(ObservableList<Node> nodes, double x, double y) {
+        Point2D pClick = new Point2D(x, y);
+        Node nearestNode = null;
+        double closestDistance = Double.POSITIVE_INFINITY;
+
+        for (Node node : nodes) {
+            Bounds bounds = node.getBoundsInParent();
+            Point2D[] corners = new Point2D[] {
+                    new Point2D(bounds.getMinX(), bounds.getMinY()),
+                    new Point2D(bounds.getMaxX(), bounds.getMinY()),
+                    new Point2D(bounds.getMaxX(), bounds.getMaxY()),
+                    new Point2D(bounds.getMinX(), bounds.getMaxY()),
+            };
+
+            for (Point2D pCompare: corners) {
+                double nextDist = pClick.distance(pCompare);
+                if (nextDist < closestDistance) {
+                    closestDistance = nextDist;
+                    nearestNode = node;
+                }
+            }
+        }
+
+        return nearestNode;
+    }
+
+    //load the LineWindow stage
     public void extend(ActionEvent actionEvent){
         if(extendLine.isSelected()) {
             FXMLLoader sLoader = new FXMLLoader(getClass().getResource("/source/lineController.fxml"));

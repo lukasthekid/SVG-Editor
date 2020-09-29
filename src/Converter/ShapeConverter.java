@@ -29,6 +29,7 @@
 
 package Converter;
 
+import java.util.Arrays;
 import java.util.List;
 
 import javafx.geometry.Bounds;
@@ -55,6 +56,7 @@ import javafx.scene.shape.SVGPath;
 import javafx.scene.shape.Shape;
 import javafx.scene.shape.VLineTo;
 import javafx.scene.text.Text;
+import org.mozilla.javascript.EcmaError;
 
 
 /**
@@ -111,6 +113,26 @@ public class ShapeConverter {
         fxPath.append("M ").append(LINE.getStartX()).append(" ").append(LINE.getStartY()).append(" ")
                 .append("L ").append(LINE.getEndX()).append(" ").append(LINE.getEndY());
         return fxPath.toString();
+    }
+    public static Line lineConvert(final SVGPath path){
+        Line l = new Line();
+        String content = path.getContent();
+        l.setStroke(path.getStroke());
+        l.setStrokeWidth(path.getStrokeWidth());
+        String[] cont = content.split(" ");
+        try{
+            double startX = Double.valueOf(cont[2]);
+            double startY = Double.valueOf(cont[3]);
+            double endX = Double.valueOf(cont[5]);
+            double endY = Double.valueOf(cont[6]);
+            l.setStartX(startX);
+            l.setStartY(startY);
+            l.setEndX(endX);
+            l.setEndY(endY);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return l;
     }
 
     public static String convertArc(final Arc ARC) {

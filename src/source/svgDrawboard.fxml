@@ -110,7 +110,12 @@
                <VBox.margin>
                   <Insets bottom="5.0" />
                </VBox.margin></Button>
-            <RadioButton fx:id="edit" mnemonicParsing="false" text="Isolate" />
+            <RadioButton fx:id="isolate" mnemonicParsing="false" text="Isolate" />
+            <RadioButton fx:id="editLines" mnemonicParsing="false" text="Edit">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </RadioButton>
          </children>
          <opaqueInsets>
             <Insets />
