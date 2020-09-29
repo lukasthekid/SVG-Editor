@@ -25,4 +25,7 @@ Similar to Inkscape this SVG-Editor in an intuitive Application in order to load
 ![alt text](https://github.com/lukasthekid/SVG-Editor/blob/master/Screenshots/LineController.PNG)
 - Now I want to display the CSV feature. By saving a drawing to CSV the content will be extracted and saved with fill,stroke,stroke-whith and path. With this feature you will be capable to load the SVG file into a database, adjust the color or delete selected path and so on. You can reopen the CSV file and edit again.
 ![alt text](https://github.com/lukasthekid/SVG-Editor/blob/master/Screenshots/CsV.PNG)
+- Surely you can delete paths within a SVG file. Just seletct the "Edit" Button only and click on the Path you want to delete. An algorithm in the background finds the closest neighboor.
+![alt text](https://github.com/lukasthekid/SVG-Editor/blob/master/Screenshots/Edit.PNG)
+![alt text](https://github.com/lukasthekid/SVG-Editor/blob/master/Screenshots/Delete.PNG)
 - have fun!
